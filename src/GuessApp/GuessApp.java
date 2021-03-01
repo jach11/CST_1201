@@ -11,7 +11,7 @@ public class GuessApp {
             System.out.println("Enter a guess between 1 - 100: ");
             guessNum = input.nextInt();
             if (guessNum == secretNum)
-                System.out.println("You guessed" +" "+secretNum +" correctly!");
+                System.out.println("You guessed " +secretNum +" correctly!");
             else if (guessNum > secretNum)
                 System.out.println("The secret number is smaller than " +guessNum);
             else System.out.println("The secret number is larger than " +guessNum);
