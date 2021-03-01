@@ -25,8 +25,7 @@ public class Password {
         while (maxAttempts < 3) {
             System.out.print("Enter your password: ");
             String passwordInp = input.next();
-            if (emailInp.equalsIgnoreCase(email) &&
-                    passwordInp.equalsIgnoreCase(password)) {
+            if (emailInp.equalsIgnoreCase(email) && passwordInp.equalsIgnoreCase(password)) {
                 System.out.print("Successful login");
                 break;
             } else {
