@@ -25,16 +25,15 @@ public class RangeApp {
         if (evenSum > oddSum) {
             winner = "even";
         } else winner = "odd";
-
         System.out.print("What's the larger sum, even or odd?: ");
         String userGuess = input.next();
-
         if (userGuess.equals(winner)) {
             System.out.println("Congratulations! You're correct!");
         }
         else {
             System.out.println("Sorry! You're incorrect!");
         }
+
         System.out.println("The sum of all even numbers between " +start+ " and " +end+ " is " +evenSum);
         System.out.println("The sum of all odd numbers between " +start+  " and " +end+ " is " +oddSum);
     }
