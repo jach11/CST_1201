@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class GuessAppv2 {
 
     public static void main(String[] args) {
-        int secretNum = (int) (Math.random() * 100);
+/*        int secretNum = (int) (Math.random() * 100);*/
+        int secretNum = 60;
         Scanner input = new Scanner(System.in);
         int humanGuessNum;
         int cpuGuessNum;
@@ -16,9 +17,26 @@ public class GuessAppv2 {
         int upperLimit = 100;
         int lowerLimit = 0;
         do {
-            cpuGuessNum = (lowerLimit + upperLimit) / 2;
             System.out.println("Enter a guess between 0 - 100: ");
             humanGuessNum = input.nextInt();
+            cpuGuessNum = (lowerLimit + upperLimit) / 2;
+            //Human Logic
+            if (humanGuessNum == secretNum) {
+                humanGuessCount++;
+                System.out.println("You Win!");
+                System.out.println("You guessed " + secretNum + " correctly!");
+                System.out.println("It took you " + humanGuessCount + " tries to guess correctly");
+                break;
+            } else if (humanGuessNum > secretNum) {
+                System.out.println("The secret number is smaller than " + humanGuessNum);
+                humanGuessCount++;
+                System.out.println("You have " + (humanGuessLimit - humanGuessCount) + " tries left");
+            } else {
+                System.out.println("The secret number is larger than " + humanGuessNum);
+                humanGuessCount++;
+                System.out.println("You have " + (humanGuessLimit - humanGuessCount) + " tries left");
+            }
+
             //CPU Logic
             if (cpuGuessNum == secretNum) {
                 cpuGuessCount++;
@@ -39,23 +57,6 @@ public class GuessAppv2 {
                 System.out.println("The computer guessed " + cpuGuessNum);
                 lowerLimit = cpuGuessNum;
                 cpuGuessCount++;
-            }
-
-            //Human Logic
-            if (humanGuessNum == secretNum) {
-                humanGuessCount++;
-                System.out.println("You Win!");
-                System.out.println("You guessed " + secretNum + " correctly!");
-                System.out.println("It took you " + humanGuessCount + " tries to guess correctly");
-                break;
-            } else if (humanGuessNum > secretNum) {
-                System.out.println("The secret number is smaller than " + humanGuessNum);
-                humanGuessCount++;
-                System.out.println("You have " + (humanGuessLimit - humanGuessCount) + " tries left");
-            } else {
-                System.out.println("The secret number is larger than " + humanGuessNum);
-                humanGuessCount++;
-                System.out.println("You have " + (humanGuessLimit - humanGuessCount) + " tries left");
             }
         } while (humanGuessCount != humanGuessLimit);
     }
