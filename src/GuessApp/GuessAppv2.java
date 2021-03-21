@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class GuessAppv2 {
 
     public static void main(String[] args) {
-/*        int secretNum = (int) (Math.random() * 100);*/
-        int secretNum = 60;
+        int secretNum = (int) (Math.random() * 100);
         Scanner input = new Scanner(System.in);
         int humanGuessNum;
         int cpuGuessNum;
