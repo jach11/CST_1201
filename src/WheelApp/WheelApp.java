@@ -41,7 +41,7 @@ public class WheelApp {
         if (evenTotal > oddTotal) {
             winner = "even";
         } else winner = "odd";
-        System.out.print("What's the larger total, even or odd?: ");
+        System.out.println("What's the larger total, even or odd?: ");
         String userGuess = input.next();
         if (userGuess.equals(winner)) {
             System.out.println("Congratulations! You're correct!");
@@ -50,8 +50,8 @@ public class WheelApp {
             System.out.println("Sorry! You're incorrect!");
         }
 
-        System.out.println("EvenTotal: " +evenTotal);
-        System.out.println("OddTotal: " +oddTotal);
+        System.out.println("Even total: " +evenTotal);
+        System.out.println("Odd total: " +oddTotal);
 
         /* Debugging */
 /*        for (int value : evenList) System.out.println(value);
