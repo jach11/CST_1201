@@ -12,16 +12,18 @@ public class RosterProject {
 
     public static void main(String[] args) {
         String fileInput = "src/RosterProject/class_roster_project.csv";
-        List<List<String>> roster = new ArrayList<>();
+        List<List<String>> rosterList = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileInput))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(COMMA_DELIMITER);
-                roster.add(Arrays.asList(values));
+                rosterList.add(Arrays.asList(values));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(roster);
+        for (List<String> strings : rosterList) {
+            System.out.println(strings);
+        }
     }
 }
