@@ -16,20 +16,23 @@ public class RosterProject {
             System.out.println("""
                     Please select a program:
                     1. Print Full Roster Report\s
-                    2. Print Individual Student Report * STILL IN DEVELOPMENT *\s
+                    2. Print Full Roster Grades\s
+                    3. Print Individual Student Report\s
                     0. Exit Program\s""");
             String userChoice = input.next();
             if (userChoice.contentEquals("1")) {
-                printRoster();
+                printRosterReport();
             } else if (userChoice.contentEquals("2")) {
-                printStudent();
+                printRosterGrade();
+            } else if (userChoice.contentEquals("3")) {
+                printStudentReport();
             } else if (userChoice.contentEquals("0")) {
                 menuOpen = false;
             } else System.out.println("The option you selected is not valid!");
         } while (menuOpen);
     }
 
-    private static void printRoster() throws IOException {
+    private static void printRosterReport() throws IOException {
         String delimiter = ",";
         String fileInput = "src/RosterProject/class_roster_project.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(fileInput))) {
@@ -43,7 +46,7 @@ public class RosterProject {
             }
         }
     }
-/*    private static void studentAVG() throws IOException {
+    private static void printRosterGrade() throws IOException {
         String delimiter = ",";
         String fileInput = "src/RosterProject/class_roster_project.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(fileInput))) {
@@ -53,11 +56,33 @@ public class RosterProject {
                 contentLine = contentLine.replace("\"", ""); //Get rid of quotes
                 contentLine = contentLine.replace("'", ""); //Get rid of quotes
                 String[] student = contentLine.split(delimiter);
-
+                double quiz = Double.parseDouble(student[3]);
+                double test1 = Double.parseDouble(student[4]);
+                double midterm = Double.parseDouble(student[5]);
+                double test3 = Double.parseDouble(student[6]);
+                double finalexam = Double.parseDouble(student[7]);
+                double presentation = Double.parseDouble(student[8]);
+                double project = Double.parseDouble(student[9]);
+                double convertedQuiz = (quiz / 10 * 100);
+                double convertedTest1 = (test1 / 50 * 100);
+                double convertedMidterm = (midterm / 50 * 100);
+                double convertedTest3 = (test3 / 30 * 100);
+                double convertedFinalexam = (finalexam / 50 * 100);
+                double convertedPresentation = (presentation / 2 * 100);
+                double convertedProject = (project / 6 * 100);
+                double quizWeight = .02;
+                double test1Weight = .10;
+                double midtermWeight = .30;
+                double test3Weight = .10;
+                double finalexamWeight = .40;
+                double presentationWeight = .02;
+                double projectWeight = .06;
+                double finalGrade = (quizWeight * convertedQuiz)+(test1Weight * convertedTest1)+(midtermWeight * convertedMidterm)+(test3Weight * convertedTest3)+(finalexamWeight * convertedFinalexam)+(presentationWeight * convertedPresentation)+(projectWeight * convertedProject);
+                System.out.printf("ID: " +student[0] +" Grade: %.2f\n", +finalGrade);
             }
         }
-    }*/
-    private static void printStudent() throws IOException {
+    }
+    private static void printStudentReport() throws IOException {
         String delimiter = ",";
         String fileInput = "src/RosterProject/class_roster_project.csv";
         List<List<String>> rosterList = new ArrayList<>();
