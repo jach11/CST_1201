@@ -127,12 +127,10 @@ public class RosterProject {
             String letterGrade;
             String[] student;
             ArrayList<String> gradeList = new ArrayList<>();
-            List<List<String>> rosterList = new ArrayList<>();
             while ((contentLine = br.readLine()) != null) {
                 contentLine = contentLine.replace("\"", ""); //Get rid of quotes
                 contentLine = contentLine.replace("'", ""); //Get rid of quotes
                 student = contentLine.split(delimiter);
-                rosterList.add(Arrays.asList(student));
                 double quiz = Double.parseDouble(student[3]);
                 double test1 = Double.parseDouble(student[4]);
                 double midterm = Double.parseDouble(student[5]);
