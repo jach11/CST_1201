@@ -17,6 +17,7 @@ public class RosterProject {
                     3. Print Individual Student Report\s
                     4. Print Grade Count\s
                     5. Print Class Average\s
+                    6. Print Roster Map\s
                     0. Exit Program\s""");
             String userChoice = input.next();
             if (userChoice.contentEquals("1")) {
@@ -29,6 +30,8 @@ public class RosterProject {
                 printGradeCount();
             } else if (userChoice.contentEquals("5")) {
                 printClassAVG();
+            } else if (userChoice.contentEquals("6")) {
+                printRosterMap();
             } else if (userChoice.contentEquals("0")) {
                 menuOpen = false;
             } else System.out.println("The option you selected is not valid!");
@@ -170,16 +173,14 @@ public class RosterProject {
             int dCount = Collections.frequency(gradeList, "D");
             int fCount = Collections.frequency(gradeList, "F");
             System.out.println("Grade Count:");
-            System.out.println("A: "+aCount);
-            System.out.println("B: "+bCount);
-            System.out.println("C: "+cCount);
-            System.out.println("D: "+dCount);
-            System.out.println("F: "+fCount);
-            /*        System.out.println(rosterList);
-        String element_0_3 = rosterList.get(0).get(5);
-        System.out.println(element_0_3);*/
+            System.out.println("A: " + aCount);
+            System.out.println("B: " + bCount);
+            System.out.println("C: " + cCount);
+            System.out.println("D: " + dCount);
+            System.out.println("F: " + fCount);
         }
     }
+
     public static void printClassAVG() throws IOException {
         String delimiter = ",";
         String fileInput = "src/RosterProject/class_roster_project.csv";
@@ -221,6 +222,25 @@ public class RosterProject {
             }
             double classAVG = total / gradeList.size();
             System.out.printf("Class Average: %.2f%n", +classAVG);
+        }
+    }
+
+    public static void printRosterMap() throws IOException {
+        String delimiter = ",";
+        String fileInput = "src/RosterProject/class_roster_project.csv";
+        Map<Integer, String> rosterMap = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileInput))) {
+            br.readLine(); //Skip header
+            String contentLine;
+            while ((contentLine = br.readLine()) != null) {
+                contentLine = contentLine.replace("\"", ""); //Get rid of quotes
+                contentLine = contentLine.replace("'", ""); //Get rid of quotes
+                String[] student = contentLine.split(delimiter);
+                for (int i = 0; i < student.length; i++) {
+                    rosterMap.put(i, student[i]);
+                }
+                System.out.println(rosterMap);
             }
         }
     }
+}
